@@ -11,3 +11,7 @@
     border: thin solid var(--form-error-color);
   }
   
+
+  .inv{
+    background-color: red;
+  }

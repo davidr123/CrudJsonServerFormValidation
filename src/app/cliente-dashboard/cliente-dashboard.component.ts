@@ -12,12 +12,17 @@ export class ClienteDashboardComponent implements OnInit {
 
  clienteModelObj: ClienteModel = new ClienteModel();
 
+ public inval= document.querySelector('#inval');
+ public invalform= document.querySelector('#invalform');
+
+
   formValue!: FormGroup;
  public clientData!:any;
 shoadd!:boolean;
 showupdate!:boolean;
+showDiv!:boolean;
  clienteselccionado!:ClienteModel;
- public submited:boolean= false;
+ public submited= false;
 
   constructor(private fb:FormBuilder, private clienteService: ApiService) { }
 
@@ -44,12 +49,13 @@ showupdate!:boolean;
       
   }
 
-  CamposInvalidos():boolean{
-    if(this.formValue.invalid && this.submited){
-      return true;
-    }else{
-      return false;
-    }
+  CamposInvalidos(){
+    // if(this.formValue.invalid && this.submited){
+    //   return true;
+    // }else{
+    //   return false;
+    // }
+    this.showDiv=true;
   }
 
   createCliente(){
@@ -76,7 +82,22 @@ showupdate!:boolean;
       alert('Hable con el administrador')
     });
   }else{
-    alert('Debe llenar todo el formulario correctamente');
+    
+
+const divInv = document.createElement('div');
+divInv.classList.add('text-center', 'alert-danger');
+divInv.textContent='Datos Invalidos';
+
+document.querySelector('#invalform')?.insertAdjacentElement('afterend', divInv);
+
+setTimeout(() => {
+  divInv.remove();
+  
+}, 3000);
+
+
+
+
   }
 
 

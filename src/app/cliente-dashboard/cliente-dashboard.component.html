@@ -51,12 +51,16 @@
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Detalle de Clientes</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      
+        </div>
+        <div id="invalform">
+                  
         </div>
         <div class="modal-body">
             <form [formGroup]="formValue" class="crud-form" (submit)="createCliente()">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Cedula</label>
-                  <input type="text" class="form-control"  pattern="^([0-9]){10}$" id="exampleInputEmail1" title="Debe ingresar solo numeros" formControlName="cedula" required  [ngClass]="{'is-invalid': submited && formu.cedula.errors}">
+                  <input type="text" class="form-control" placeholder="Ingrese Cedula"  pattern="^([0-9]){10}$" id="exampleInputEmail1" title="Debe ingresar solo numeros" formControlName="cedula" required  [ngClass]="{'is-invalid': submited && formu.cedula.errors}">
                   <div *ngIf="submited && formu.cedula.errors" class="invalid-feedback">
                     <div *ngIf="formu.cedula.errors.required">Por favor solo ingrese numeros</div>
                   </div>
@@ -102,15 +106,18 @@
 
                   <div class="modal-footer">
                     <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button *ngIf="shoadd" type="submit" class="btn btn-primary"  >Añadir</button>
-                    <div class="invalid-feedback">
-                      <div *ngIf="CamposInvalidos()" >Datos Invalidos</div>
+                    <div  *ngIf="showDiv" class="inv">
+                      <div class="invalid-feedback alert alert-danger inv"  >Datos Invalidos</div>
                     </div>
+                    <button *ngIf="shoadd" type="submit" class="btn btn-primary" >Añadir</button>
+                 
                     <button *ngIf="showupdate" type="button" class="btn btn-primary" (click)="UpdateCliente()">Update</button>
+
+              
           
                   </div>
 
-                  
+                 
                   
           
               </form>
