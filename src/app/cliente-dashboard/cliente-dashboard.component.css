@@ -1,0 +1,13 @@
+.crud-form{
+    --form-ok-color: #4caf50;
+    --form-error-color: #f44B36;
+}
+
+.crud-form [required]:valid{
+    border: thin solid var(--form-ok-color);
+  }
+  
+  .crud-form [required]:invalid{
+    border: thin solid var(--form-error-color);
+  }
+  

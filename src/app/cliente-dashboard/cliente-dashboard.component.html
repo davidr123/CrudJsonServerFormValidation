@@ -1,0 +1,121 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <h1 style="color: white;">CRUDJSONSERVER</h1>
+        <div class="d-flex">
+            <button (click)="clickAddCliente()" class="btn btn-success"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir CLiente</button>
+
+        </div>
+    </div>
+</nav>
+
+
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">ClienteId</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Acciones</th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cli of clientData">
+            <td>{{cli.id}}</td>
+            <td>{{cli.cedula}}</td>
+            <td>{{cli.nombre}}</td>
+            <td>{{cli.apellido}}</td>
+            <td>{{cli.direccion}}</td>
+            <td>{{cli.telefono}}</td>
+            <td>
+                <button class="btn btn-info" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editClient(cli)">Edit</button>
+                <button (click)="deleteCliente(cli)" class="btn btn-danger">Delete</button>
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detalle de Clientes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue" class="crud-form" (submit)="createCliente()">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Cedula</label>
+                  <input type="text" class="form-control"  pattern="^([0-9]){10}$" id="exampleInputEmail1" title="Debe ingresar solo numeros" formControlName="cedula" required  [ngClass]="{'is-invalid': submited && formu.cedula.errors}">
+                  <div *ngIf="submited && formu.cedula.errors" class="invalid-feedback">
+                    <div *ngIf="formu.cedula.errors.required">Por favor solo ingrese numeros</div>
+                  </div>
+                 
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" formControlName="nombre" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required 
+                  [ngClass]="{'is-invalid': submited && formu.nombre.errors}">
+
+                  <div *ngIf="submited && formu.nombre.errors" class="invalid-feedback">
+                    <div *ngIf="formu.nombre.errors.required">Por favor solo ingrese letras y espacios</div>
+                  </div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="apellido" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required
+                    [ngClass]="{'is-invalid': submited && formu.apellido.errors}">
+                  <div *ngIf="submited && formu.apellido.errors" class="invalid-feedback">
+                    <div *ngIf="formu.apellido.errors.required">Por favor solo ingrese letras y espacios</div>
+                  </div>
+                </div>
+
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Direccion</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="direccion" required>
+                    <div *ngIf="submited && formu.direccion.errors" class="invalid-feedback">
+                      <div *ngIf="formu.direccion.errors.required">Por favor solo ingrese letras y espacios</div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Telefono</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" formControlName="telefono" pattern="^([0-9]){10}$" required
+                    [ngClass]="{'is-invalid': submited && formu.telefono.errors}">
+                    <div *ngIf="submited && formu.telefono.errors" class="invalid-feedback">
+                      <div *ngIf="formu.telefono.errors.required">Por favor solo ingrese numeros</div>
+                    </div>
+                  </div>
+                
+
+                  <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button *ngIf="shoadd" type="submit" class="btn btn-primary"  >Añadir</button>
+                    <div class="invalid-feedback">
+                      <div *ngIf="CamposInvalidos()" >Datos Invalidos</div>
+                    </div>
+                    <button *ngIf="showupdate" type="button" class="btn btn-primary" (click)="UpdateCliente()">Update</button>
+          
+                  </div>
+
+                  
+                  
+          
+              </form>
+        </div>
+
+      </div>
+    </div>
+  </div>

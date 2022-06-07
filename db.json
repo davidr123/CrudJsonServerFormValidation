@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "cedula": "0980976145",
+      "nombre": "sdasd",
+      "apellido": "sdasd",
+      "direccion": "sdsdsad",
+      "telefono": "3423432",
+      "id": 1
+    },
+    {
+      "cedula": "4444111111",
+      "nombre": "xcxxc",
+      "apellido": "cxzc",
+      "direccion": "cxzc",
+      "telefono": "4324324334",
+      "id": 2
+    },
+    {
+      "cedula": "0909090999",
+      "nombre": "gdfg",
+      "apellido": "gfgdfggf",
+      "direccion": "fdgfdgdg",
+      "telefono": "4543544545",
+      "id": 3
+    },
+    {
+      "cedula": "4444111111",
+      "nombre": "Freddy",
+      "apellido": "dasd",
+      "direccion": "dsdsa",
+      "telefono": "3343334333",
+      "id": 4
+    },
+    {
+      "cedula": "4444111111",
+      "nombre": "sdasd",
+      "apellido": "fdf",
+      "direccion": "Davif",
+      "telefono": "4444444444",
+      "id": 5
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
